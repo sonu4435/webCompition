@@ -1,3 +1,29 @@
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+
+const CountUp = ({ end }: { end: number }) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const duration = 2 // duration in seconds
+    const increment = end / (duration * 60) // assuming 60 frames per second
+
+    let currentCount = 0
+    const interval = setInterval(() => {
+      currentCount += increment
+      if (currentCount >= end) {
+        currentCount = end
+        clearInterval(interval)
+      }
+      setCount(Math.floor(currentCount))
+    }, 1000 / 60) // 60 frames per second
+
+    return () => clearInterval(interval)
+  }, [end])
+
+  return <span>{count}</span>
+}
+
 export default function HeroSection() {
   return (
     <section className="bg-white px-6 py-12 relative overflow-hidden">
@@ -30,7 +56,7 @@ export default function HeroSection() {
                 </div>
                 <div className="flex flex-col items-start justify-start px-4">
                   <span className="text-base font-medium">subjects</span>
-                  <span className="text-3xl font-bold ">+40</span>
+                  <span className="text-3xl font-bold "><CountUp end={40} /></span>
                 </div>
               </div>
               <div className="h-36 w-52 border border-black rounded-2xl bg-[#a479dc]/80">
@@ -38,8 +64,8 @@ export default function HeroSection() {
                   <span className="text-sm Kodchasan-medium text-black font-semibold px-2 tracking-wider">Online</span>
                 </div>
                 <div className="flex flex-col items-start justify-start px-4">
-                  <span className="text-base font-medium">cources</span>
-                  <span className="text-3xl font-bold ">+120</span>
+                  <span className="text-base font-medium">courses</span>
+                  <span className="text-3xl font-bold "><CountUp end={120} /></span>
                 </div>
               </div>
               <div className="h-36 w-52 border border-black rounded-2xl bg-[#FDCC41]">
@@ -48,7 +74,7 @@ export default function HeroSection() {
                 </div>
                 <div className="flex flex-col items-start justify-start px-4">
                   <span className="text-base font-medium">learner reviews</span>
-                  <span className="text-3xl font-bold ">+180k</span>
+                  <span className="text-3xl font-bold "><CountUp end={180} />k</span>
                 </div>
               </div>
             </div>
@@ -81,4 +107,3 @@ export default function HeroSection() {
     </section>
   )
 }
-
