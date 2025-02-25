@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "KodchasanSemi";
+  src: url("/fonts/Kodchasan-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "KodchasanMedium";
+  src: url("/fonts/Kodchasan-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "KodchasanBold";
+  src: url("/fonts/Kodchasan-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Kodchasan";
+  src: url("/fonts/Kodchasan-Regular.ttf") format("truetype");
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+:root {
+  --primary: 10 100% 60%;
+  --yellow: 44, 98%, 62%;
+  --purple: 266 83% 77%;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+[data-scroll-container] {
+  overflow: hidden;
+}
+
+[data-scroll-section] {
+  position: relative;
+}
+
+.kodchasan-semibold {
+  font-family: "KodchasanSemi", serif;
+}
+
+.kodchasan-medium {
+  font-family: "KodchasanMedium", serif;
+}
+.kodchasan-bold {
+  font-family: "KodchasanBold", serif;
+}
+.Kodchasan {
+  font-family: "Kodchasan", serif;
+}
+
+.nav-link {
+  @apply text-gray-600 text-sm hover:text-gray-900;
+}
+
+.nav-link::after {
+  @apply ml-1 text-gray-400;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.number-badge {
+  @apply rounded-xl px-2 py-2 flex items-center gap-2 text-sm font-medium;
+}
+
+.number-badge.purple {
+  @apply bg-purple-100;
+}
+
+.number-badge.yellow {
+  background-color: var(--yellow);
+}
+
+.course-card {
+  @apply relative pb-10 bg-white rounded-xl p-4 border w-[100%] border-gray-900;
+}
+
+.course-card img {
+  @apply rounded-lg mb-3;
+}
+
+.more-details-btn {
+  @apply absolute bottom-2 left-2 bg-primary text-white rounded-full px-6 py-2 text-sm hover:bg-opacity-90 self-end;
+}
+
+.subject-tag {
+  @apply px-4 py-2 rounded-full text-sm bg-gray-100 hover:bg-gray-200 transition-colors;
+}
+
+.carousel-dots {
+  @apply flex gap-2 justify-center mt-6;
+}
+
+.carousel-dot.active {
+  @apply bg-primary;
+}
+
+.locomotive-scroll {
+  overflow: hidden;
+}
