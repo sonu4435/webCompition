@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 
 const CountUp = ({ end }: { end: number }) => {
   const [count, setCount] = useState(0)
@@ -21,10 +21,24 @@ const CountUp = ({ end }: { end: number }) => {
     return () => clearInterval(interval)
   }, [end])
 
-  return <span>{count}</span>
+  return <motion.span animate={{ opacity: [0, 1] }} transition={{ duration: 2 }}>{count}</motion.span>
 }
 
 export default function HeroSection() {
+  const controls = useAnimation()
+
+  useEffect(() => {
+    controls.start({
+      y: [0, -14, 0],
+      transition: {
+        duration: 2, // Adjusted duration for faster floating effect
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    })
+  }, [controls])
+
   return (
     <section className="bg-white px-6 py-12 relative overflow-hidden">
       <div className="max-w-7xl mx-10">
@@ -96,10 +110,11 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-            <img
+            <motion.img
               src='/humanPencil.png'
               alt="Person on pencil illustration"
               className="w-2/3 absolute top-28 right-16"
+              animate={controls}
             />
           </div>
         </div>

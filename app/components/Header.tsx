@@ -23,8 +23,8 @@ export default function Header() {
       </nav>
 
       <div className="flex items-center gap-4">
-        <button className="text-sm text-gray-600 hover:text-gray-900">Sign up</button>
-        <button className="bg-primary text-white px-4 py-1.5 rounded-full text-sm">Login</button>
+        <button className="text-sm text-gray-200" disabled>Sign up</button>
+        <Link href="/dashboard" className="bg-primary text-white px-4 py-1.5 rounded-full text-sm">Dashboard</Link>
       </div>
     </header>
   )

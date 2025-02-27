@@ -9,6 +9,7 @@ import SubjectsSection from "./components/SubjectsSection"
 
 // Import Locomotive Scroll type only (not the library itself)
 import type LocomotiveScrollType from "locomotive-scroll"
+import Brand from "./components/Brand"
 
 export default function Home() {
   const [scrollInstance, setScrollInstance] = useState<LocomotiveScrollType | null>(null)
@@ -49,7 +50,7 @@ export default function Home() {
         <HeroSection />
         <CoursesSection />
         <SkillsSection />
-        <SubjectsSection />
+        <Brand />
       </div>
     </main>
   )
